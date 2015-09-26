@@ -8,7 +8,7 @@
 *.DS_Store
 .coverage
 .vagrant
-public/static/
-public/media/
+public/
+public/
 *.priv
 .env

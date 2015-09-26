@@ -13,20 +13,10 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
+import dj_database_url
+
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '(+(9vw1fmi5j3ik(w)mi95!(#!+=_14w#ee#c7%4_fyeg$$f($'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -75,10 +65,7 @@ WSGI_APPLICATION = 'cryptocards.wsgi.application'
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': dj_database_url.config(default='postgres:///crpytocards'),
 }
 
 
@@ -99,4 +86,38 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
+PUBLIC_ROOT = os.environ.get('PUBLIC_ROOT', os.path.join(BASE_DIR, 'public'))
+
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(PUBLIC_ROOT, 'static')
+
+MEDIA_ROOT = os.path.join(PUBLIC_ROOT, 'media')
+
+# Security settings
+
+SECRET_KEY = os.environ['SECRET_KEY']
+
+DEBUG = os.environ.get('DEBUG', 'on') == 'on'
+
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(';')
+
+X_FRAME_OPTIONS = 'DENY'
+
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+SECURE_BROWSER_XSS_FILTER = True
+
+SSL_ENABLED = os.environ.get('SSL', 'off') == 'on'
+
+SECURE_SSL_REDIRECT = SSL_ENABLED
+
+SECURE_HSTS_SECONDS = 60 * 60 * 24 * 365 if SSL_ENABLED else 0
+
+SESSION_COOKIE_SECURE = SSL_ENABLED
+
+SESSION_COOKIE_HTTPONLY = True
+
+CSRF_COOKIE_SECURE = SSL_ENABLED
+
+CSRF_COOKIE_HTTPONLY = True
