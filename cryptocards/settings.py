@@ -15,7 +15,6 @@ import os
 
 import dj_database_url
 
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Application definition
@@ -102,6 +101,8 @@ DEBUG = os.environ.get('DEBUG', 'on') == 'on'
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(';')
 
+INTERNAL_IPS = ('127.0.0.1', )
+
 X_FRAME_OPTIONS = 'DENY'
 
 SECURE_CONTENT_TYPE_NOSNIFF = True
@@ -121,3 +122,31 @@ SESSION_COOKIE_HTTPONLY = True
 CSRF_COOKIE_SECURE = SSL_ENABLED
 
 CSRF_COOKIE_HTTPONLY = True
+
+# Logging settings
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'default': {
+            'format': '[%(asctime)s: %(levelname)s/%(name)s] - %(message)s',
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'default',
+        }
+    },
+    'root': {
+        'level': 'INFO',
+        'handlers': ['console', ]
+    },
+    'loggers': {
+        'django': {
+            'propagate': True,
+        },
+    }
+}
