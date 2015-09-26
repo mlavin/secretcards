@@ -150,3 +150,10 @@ LOGGING = {
         },
     }
 }
+
+# Systems checks
+
+SILENCED_SYSTEM_CHECKS = [
+    # Not enabling HSTS for all subdomains
+    'security.W005'
+]
