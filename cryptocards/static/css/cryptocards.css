@@ -1,0 +1,87 @@
+/* Additional Fonts */
+@font-face {
+    font-family: 'pacifico';
+    src: url('../libs/pacifico-webfont.eot');
+    src: url('../libs/pacifico-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../libs/pacifico-webfont.woff2') format('woff2'),
+         url('../libs/pacifico-webfont.woff') format('woff'),
+         url('../libs/pacifico-webfont.ttf') format('truetype'),
+         url('../libs/pacifico-webfont.svg#pacificoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../libs/MaterialIcons-Regular.eot'); /* For IE6-8 */
+    src: local('Material Icons'),
+         local('MaterialIcons-Regular'),
+         url('../libs/MaterialIcons-Regular.woff2') format('woff2'),
+         url('../libs/MaterialIcons-Regular.woff') format('woff'),
+         url('../libs/MaterialIcons-Regular.ttf') format('truetype');
+}
+
+/* Font Icons */
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Preferred icon size */
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+}
+
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+/* Global Styles */
+header .mdl-layout-title.name {
+    font-family: pacifico, "Helvetica", "Arial", sans-serif;
+}
+
+/* Homepage Styles */
+#homepage #splash {
+    position: relative;
+    height: 800px;
+    width: auto;
+    background-color: #f3f3f3;
+    padding: 2em 0;
+}
+
+#homepage #splash .mdl-card {
+    margin: auto;
+    width: 80%;
+}
+
+#homepage #splash .mdl-card > .mdl-card__title {
+    background: url('../img/6675794393_bea8255341_o.jpg') center 30%  no-repeat;
+    background-size: cover;
+    height: 500px;
+}
+
+#homepage #splash .mdl-card .mdl-card__title-text {
+    font-family: pacifico, "Helvetica", "Arial", sans-serif;
+    font-size: 60;
+}
