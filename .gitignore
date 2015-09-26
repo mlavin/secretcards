@@ -1,0 +1,14 @@
+*.sw[po]
+*.py[co]
+.project
+.pydevproject
+*~
+*.db
+*.orig
+*.DS_Store
+.coverage
+.vagrant
+public/static/
+public/media/
+*.priv
+.env
