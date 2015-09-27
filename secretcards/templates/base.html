@@ -7,7 +7,7 @@
     {% block extra-meta %}{% endblock %}
     <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/fonts.css' %}">
     <link rel="stylesheet" type="text/css" media="all" href="{% static 'libs/materialize.css' %}">
-    <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/cryptocards.css' %}">
+    <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/secretcards.css' %}">
     {% block extra-css %}{% endblock %}
 </head>
 <body id="{% block body-id %}body{% endblock %}" class="{% block body-class %}body{% endblock %}">
@@ -15,7 +15,7 @@
         <nav class="light-blue">
             <div class="nav-wrapper container">
                 <a href="{% url 'home' %}" class="brand-logo">
-                    Crypto Cards
+                    Secret Cards
                 </a>
                 <ul class="right hide-on-small-only">
                     <li><a href="#add"><i class="material-icons">add</i></a></li>
@@ -29,7 +29,7 @@
     <footer class="page-footer light-blue darken-3">
         <div class="footer-copyright">
             <div class="container">
-                &copy; {% now 'Y' %} Crypto Cards
+                &copy; {% now 'Y' %} Secret Cards
                 <a class="grey-text text-lighten-4 right" href="#!">Privacy Policy</a>
             </div>
           </div>

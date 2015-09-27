@@ -1,4 +1,4 @@
-"""cryptocards URL Configuration"""
+"""Secret Cards URL Configuration"""
 
 from django.conf.urls import url
 from django.views.generic import TemplateView
