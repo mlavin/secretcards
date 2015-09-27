@@ -12,7 +12,7 @@ IMAGES = (
     ('pair.png', 'crsan'),
     ('flying.png', 'sadie_16'),
     ('looking-up.png', 'albaraa'),
-    ('gray.pnp', 'mtrichardson'),
+    ('gray.png', 'mtrichardson'),
     ('three.png', 'londonlooks'),
 )
 
