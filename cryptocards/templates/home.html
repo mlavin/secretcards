@@ -1,24 +1,21 @@
 {% extends 'base.html' %}
 
+{% load staticfiles %}
+
 {% block body-id %}homepage{% endblock %}
 
 {% block content %}
 <section id="splash">
-    <div class="mdl-card mdl-shadow--2dp">
-        <div class="mdl-card__title mdl-card--expand">
-            <h2 class="mdl-card__title-text mdl-color-text--pink-500">adorably secure messages</h2>
-        </div>
-        <div class="mdl-card__supporting-text">
+    <div class="row">
+        <div class="col s12 m8 offset-m2">
+            <div class="card">
+                <div class="card-image">
+                    <img src="{% static 'img/6675794393_bea8255341_o.jpg' %}">
+                    <span class="card-title pink-text">adorably secure messages</span>
+                </div>
+                <div class="card-content">
             Send encrypted messages to <a href="https://keybase.io">Keybase</a> users embedded in
-            cat picutures. Search below to find the user you want to message.
-        </div>
-        <div class="mdl-card__actions mdl-card--border">
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label">
-                <label class="mdl-button mdl-js-button mdl-button--icon" for="fixed-header-drawer-exp">
-                    <i class="material-icons">search</i>
-                </label>
-                <div class="mdl-textfield__expandable-holder">
-                    <input class="mdl-textfield__input" type="text" name="sample" id="fixed-header-drawer-exp" />
+            cat picutures.
                 </div>
             </div>
         </div>
