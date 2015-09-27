@@ -23,8 +23,7 @@ class Message(models.Model):
     uid = models.BigIntegerField(default=simpleflake, unique=True, db_index=True)
     message = models.TextField()
     image = models.CharField(choices=IMAGES, max_length=200)
-    username = models.CharField(max_length=255)
     created_date = models.DateTimeField(default=now)
 
     def __str__(self):
-        return 'Message for {} sent on {}'.format(self.username, self.created_date.isoformat())
+        return 'Message {} sent on {}'.format(self.uid, self.created_date.isoformat())
