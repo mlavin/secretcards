@@ -9,6 +9,9 @@ class NewMessageForm(forms.ModelForm):
     class Meta:
         model = models.Message
         fields = ('message', 'image', )
+        widgets = {
+            'image': forms.HiddenInput,
+        }
 
     def clean_message(self):
         """Validate message format."""

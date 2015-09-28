@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load staticfiles %}
+
 {% block body-id %}message-form{% endblock %}
 
 {% block content %}
@@ -9,8 +11,8 @@
         <div class="row">
             <div class="input-field col s6">
                 <i class="material-icons prefix">search</i>
-                <input placeholder="Find user on Keybase.io" id="first_name" type="text" class="validate">
-                <label for="first_name">Recipient</label>
+                <input placeholder="Find user on Keybase.io" id="keybase" type="text" class="validate">
+                <label for="usename">Recipient</label>
             </div>
         </div>
         <div class="row">
@@ -19,6 +21,9 @@
                 <textarea id="{{ form.messsage.id }}" class="materialize-textarea" name="{{ form.message.name"></textarea>
                 <label for="{{ form.message.id }}">Message</label>
             </div>
+        </div>
+        <div class="row buttons">
+            <button id="encrypt-button" disabled class="waves-effect waves-pink btn-flat disabled right">Encrypt</button>
         </div>
         {% for row in images %}
         <div class="row images">
@@ -29,17 +34,27 @@
                             <img src="{{ url }}" alt="{{ name }}">
                         </div>
                         <div class="card-action">
-                            <a class="pink-text" href="#">Select</a>
+                            <a class="pink-text" data-image="{{ name }}" data-off="Select" data-on="Clear" href="#">
+                                Select
+                            </a>
                         </div>
                     </div>
                 </div>
             {% endfor %}
         </div>
         {% endfor %}
+        <div class="hide">
+            {{ form.image }}
+        </div>
         <div class="row buttons">
-            <a class="waves-effect waves-light-blue btn-flat disabled right">Save</a>
-            <a class="waves-effect waves-pink light-blue-text btn-flat right">Encrypt</a>
+            <button id="save-button" disabled class="waves-effect waves-pink btn-flat disabled right">Save</button>
         </div>
     </form>
 </div>
+{% endblock %}
+
+{% block extra-js %}
+    <script src="{% static 'libs/underscore.js' %}"></script>
+    <script src="{% static 'libs/backbone.js' %}"></script>
+    <script src="{% static 'js/secretcards.js' %}"></script>
 {% endblock %}
