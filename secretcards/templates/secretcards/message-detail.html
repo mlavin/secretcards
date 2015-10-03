@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block body-id %}message-detail{% endblock %}
+
+{% block content %}
+<section id="message">
+    <div class="row">
+        <div class="col s12 m6 offset-m3">
+            <div class="card">
+                <div class="card-image">
+                    <img src="{{ message.get_image_url }}">
+                </div>
+                <div class="card-action">
+                    <a class="pink-text" href="#">Download</a>
+                    <a class="pink-text" href="#">Share</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="help">
+    <div class="row">
+        <div class="col s12 m6 offset-m3">
+            Decrypting this message requires having the private key. If this message
+            was encrypted for you then you can decrypt it using your Keybase account.
+            <pre>
+$ curl -o {{ message.slug }}.zip {{ full_image_url }}
+$ unzip -p {{ message.slug }}.zip {{ message.slug }}.asc
+$ keybase decrypt {{ message.slug }}.asc
+            </pre>
+            If you don't have a Keybase account then this message is definately not
+            for you.
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,3 +1,5 @@
+from django.contrib.staticfiles import finders
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.timezone import now
 
@@ -27,3 +29,22 @@ class Message(models.Model):
 
     def __str__(self):
         return 'Message {} sent on {}'.format(self.uid, self.created_date.isoformat())
+
+    def get_absolute_url(self):
+        return reverse('message-detail', kwargs={'slug': self.slug})
+
+    def get_image_url(self):
+        return reverse('message-image', kwargs={'slug': self.slug})
+
+    @property
+    def slug(self):
+        return '{0:x}'.format(self.uid)
+
+    @property
+    def image_buffer(self):
+        """File buffer for image + encrypted message."""
+        image_path = finders.find('img/kittens/{}'.format(self.image))
+        if image_path:
+            return open(image_path, 'rb')
+        else:
+            return None
