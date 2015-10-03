@@ -178,7 +178,7 @@
     var MessageFormView = Backbone.View.extend({
         el: '#message-form form',
         events: {
-            'submit': 'valid',
+            'submit': 'submit',
             'click .images .card-action a[data-image]': 'toggleImage',
             'input :input[name="message"]': 'toggleEncryptButton',
             'click #encrypt-button': 'encryptMessage'
@@ -268,6 +268,13 @@
                         self.toggleSaveButton();
                     }
                 });
+            }
+        },
+        submit: function (e) {
+            if (this.valid()) {
+                this.$messageInput.prop('disabled', false);
+            } else {
+                e.preventDefault();
             }
         }
     });
