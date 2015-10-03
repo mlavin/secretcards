@@ -1,5 +1,5 @@
-/* globals jQuery, _, Backbone */
-(function ($, _, Backbone) {
+/* globals jQuery, _, Backbone, kbpgp */
+(function ($, _, Backbone, kbpgp) {
     'use strict';
 
     var ResultsItemView = Backbone.View.extend({
@@ -64,6 +64,7 @@
             this.parent.attr('placeholder', this.parent.data('placeholder'));
             this.parent.prop('disabled', false);
             this.parent.focus();
+            this.trigger('clear');
             this.remove();
         }
     });
@@ -106,8 +107,12 @@
         },
         selected: function (item) {
             var selectedView = new SelectedItemView({info: item, parent: this.parent});
-            this.trigger('selected', item);
             selectedView.render();
+            selectedView.on('clear', this.clear, this);
+            this.trigger('selected', item);
+        },
+        clear: function () {
+            this.trigger('clear');
         }
     });
 
@@ -155,6 +160,7 @@
             }
             this.resultsView = new ResultsView({results: results, parent: this.$input});
             this.resultsView.on('selected', this.fetchKey, this);
+            this.resultsView.on('clear', this.removeKey, this);
             this.resultsView.render();
         },
         fetchKey: function (info) {
@@ -163,26 +169,30 @@
                 .done(function (key) {
                     self.trigger('selected', key);
                 });
+        },
+        removeKey: function () {
+            this.trigger('selected', null);
         }
     });
 
     var MessageFormView = Backbone.View.extend({
         el: '#message-form form',
         events: {
-            'submit': 'validate',
+            'submit': 'valid',
             'click .images .card-action a[data-image]': 'toggleImage',
-            'input :input[name="message"]': 'toggleEncryptButton'
+            'input :input[name="message"]': 'toggleEncryptButton',
+            'click #encrypt-button': 'encryptMessage'
         },
         initialize: function () {
             this.key = null;
-            this.valid = false;
             this.encrypted = false;
-            this.$imageInput = $('input[name="image"]', this.$el);
+            this.$imageInput = $(':input[name="image"]', this.$el);
+            this.$messageInput = $(':input[name="message"]', this.$el);
             this.$encryptButton = $('#encrypt-button', this.$el);
             this.$saveButton = $('#save-button', this.$el);
         },
-        validate: function (e) {
-            e.preventDefault();
+        valid: function () {
+            return this.encrypted && this.$imageInput.val();
         },
         toggleImage: function (e) {
             e.preventDefault();
@@ -198,26 +208,71 @@
                 $link.text($link.data('on'));
                 this.$imageInput.val(image);
             }
+            this.toggleSaveButton();
         },
         toggleEncryptButton: function () {
-            if (this.key !== null && $(':input[name="message"]', this.$el).val()) {
+            this.$encryptButton.prop('disabled', true);
+            this.$encryptButton.addClass('disabled');
+            this.$encryptButton.removeClass('waves-effect waves-green');
+            if (this.key !== null && this.$messageInput.val() && !this.encrypted) {
                 this.$encryptButton.prop('disabled', false);
                 this.$encryptButton.removeClass('disabled');
-            } else {
-                this.$encryptButton.prop('disabled', true);
-                this.$encryptButton.addClass('disabled');
+                this.$encryptButton.addClass('waves-effect waves-green');
             }
         },
         toggleSaveButton: function () {
-
+            if (this.valid()) {
+                this.$saveButton.prop('disabled', false);
+                this.$saveButton.removeClass('disabled');
+            } else {
+                this.$saveButton.prop('disabled', true);
+                this.$saveButton.addClass('disabled');
+            }
         },
         populateKey: function (key) {
-            this.key = key;
-            this.toggleEncryptButton();
+            var self = this;
+            if (key === null) {
+                this.key = key;
+                if (this.encrypted) {
+                    this.$messageInput.val('');
+                    this.$messageInput.prop('disabled', false);
+                    this.$messageInput.removeClass('disabled');
+                    this.encrypted = false;
+                }
+                this.toggleEncryptButton();
+            } else {
+                kbpgp.KeyManager.import_from_armored_pgp({
+                    armored: key
+                }, function (error, keyManager) {
+                    if (!error) {
+                        self.key = keyManager;
+                        self.toggleEncryptButton();
+                    } else {
+                        self.populateKey(null);
+                    }
+                });
+            }
+        },
+        encryptMessage: function (e) {
+            e.preventDefault();
+            var message = this.$messageInput.val(),
+                self = this;
+            if (this.key !== null && !this.encrypted && message) {
+                kbpgp.box({msg: message, encrypt_for: this.key}, function (error, result) {
+                    if (result && !error) {
+                        self.encrypted = true;
+                        self.$messageInput.val(result);
+                        self.$messageInput.prop('disabled', true);
+                        self.$messageInput.addClass('disabled');
+                        self.toggleEncryptButton();
+                        self.toggleSaveButton();
+                    }
+                });
+            }
         }
     });
     var keybase = new KeybaseView();
     var form = new MessageFormView();
     keybase.on('selected', form.populateKey, form);
 
-})(jQuery, _, Backbone);
+})(jQuery, _, Backbone, kbpgp);

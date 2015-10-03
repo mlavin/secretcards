@@ -33,12 +33,12 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">edit</i>
-                <textarea id="{{ form.messsage.id }}" class="materialize-textarea" name="{{ form.message.name }}"></textarea>
+                <textarea id="{{ form.message.id }}" class="materialize-textarea" name="{{ form.message.name }}"></textarea>
                 <label for="{{ form.message.id }}">Message</label>
             </div>
         </div>
         <div class="row buttons">
-            <button id="encrypt-button" disabled class="waves-effect waves-pink btn-flat disabled right">Encrypt</button>
+            <a id="encrypt-button" disabled class="btn-flat disabled right">Encrypt</a>
         </div>
         {% for row in images %}
         <div class="row images">
@@ -62,7 +62,7 @@
             {{ form.image }}
         </div>
         <div class="row buttons">
-            <button id="save-button" disabled class="waves-effect waves-pink btn-flat disabled right">Save</button>
+            <button id="save-button" disabled class="btn-flat disabled right">Save</button>
         </div>
     </form>
 </div>
@@ -71,5 +71,6 @@
 {% block extra-js %}
     <script src="{% static 'libs/underscore.js' %}"></script>
     <script src="{% static 'libs/backbone.js' %}"></script>
+    <script src="{% static 'libs/kbpgp.js' %}"></script>
     <script src="{% static 'js/secretcards.js' %}"></script>
 {% endblock %}
