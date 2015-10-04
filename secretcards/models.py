@@ -1,3 +1,6 @@
+import io
+import zipfile
+
 from django.contrib.staticfiles import finders
 from django.core.urlresolvers import reverse
 from django.db import models
@@ -17,6 +20,26 @@ IMAGES = (
     ('gray.png', 'mtrichardson'),
     ('three.png', 'londonlooks'),
 )
+
+
+class _FileStream(object):
+    """Yield multiple file objects together."""
+
+    def __init__(self, files):
+        self.pending = files
+        self.complete = []
+
+    def read(self, size=None):
+        remaining = size
+        current = io.BytesIO()
+        while self.pending and (remaining is None or remaining > 0):
+            chunk = self.pending[0].read(remaining or -1)
+            if remaining is None or len(chunk) < remaining:
+                self.complete.append(self.pending.pop(0))
+            if remaining is not None:
+                remaining -= len(chunk)
+            current.write(chunk)
+        return current.getvalue()
 
 
 class Message(models.Model):
@@ -45,6 +68,11 @@ class Message(models.Model):
         """File buffer for image + encrypted message."""
         image_path = finders.find('img/kittens/{}'.format(self.image))
         if image_path:
-            return open(image_path, 'rb')
+            zip_stream = io.BytesIO()
+            zip_data = zipfile.ZipFile(zip_stream, mode='w')
+            zip_data.writestr('{}.asc'.format(self.slug), self.message)
+            zip_data.close()
+            zip_stream.seek(0)
+            return _FileStream([open(image_path, 'rb'), zip_stream])
         else:
             return None
