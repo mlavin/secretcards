@@ -27,7 +27,7 @@
             was encrypted for you then you can decrypt it using your Keybase account.
             <pre>
 $ curl -o {{ message.slug }}.zip {{ full_image_url }}
-$ unzip -p {{ message.slug }}.zip {{ message.slug }}.asc
+$ unzip {{ message.slug }}.zip
 $ keybase decrypt {{ message.slug }}.asc
             </pre>
             If you don't have a Keybase account then this message is definately not
