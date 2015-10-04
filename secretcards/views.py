@@ -49,7 +49,7 @@ class MessageDetailView(DetailView):
     def render_to_response(self, context, **response_kwargs):
         if self.content_type == 'image/png':
             message = context['message']
-            image = message.image_buffer
+            image = message.get_image()
             if image is not None:
                 response = FileResponse(image, content_type=self.content_type)
                 if 'download' in self.request.GET:

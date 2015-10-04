@@ -66,8 +66,7 @@ class Message(models.Model):
     def slug(self):
         return '{0:x}'.format(self.uid)
 
-    @property
-    def image_buffer(self):
+    def get_image(self):
         """File buffer for image + encrypted message."""
         image_path = finders.find('img/kittens/{}'.format(self.image))
         if image_path:
