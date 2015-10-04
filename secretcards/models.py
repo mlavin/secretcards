@@ -59,6 +59,9 @@ class Message(models.Model):
     def get_image_url(self):
         return reverse('message-image', kwargs={'slug': self.slug})
 
+    def get_download_url(self):
+        return '{}?download=png'.format(self.get_image_url())
+
     @property
     def slug(self):
         return '{0:x}'.format(self.uid)

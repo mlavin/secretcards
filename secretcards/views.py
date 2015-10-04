@@ -1,6 +1,5 @@
 import itertools
 
-from django.contrib.staticfiles import finders
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.http import Http404, FileResponse
 from django.views.generic import CreateView, DetailView, TemplateView
@@ -52,7 +51,11 @@ class MessageDetailView(DetailView):
             message = context['message']
             image = message.image_buffer
             if image is not None:
-                return FileResponse(image, content_type=self.content_type)
+                response = FileResponse(image, content_type=self.content_type)
+                if 'download' in self.request.GET:
+                    response['Content-Disposition'] = 'attachment; filename={}.png'.format(
+                        message.slug)
+                return response
             else:
                 raise Http404('Invalid/unknown image name {}.'.format(message.image))
         else:
