@@ -4,6 +4,12 @@
 
 {% block body-id %}message-form{% endblock %}
 
+{% block nav-items %}
+    {% with nav_add=True %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}
+
 {% block content %}
 <div class="row">
     <form action='' method='post' class="col s12 m8 offset-m2">

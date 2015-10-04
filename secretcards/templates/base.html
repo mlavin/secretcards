@@ -18,8 +18,14 @@
                     Secret Cards
                 </a>
                 <ul class="right hide-on-small-only">
-                    <li><a href="#add"><i class="material-icons">add</i></a></li>
-                    <li><a href="">Help</a></li>
+                    {% block nav-items %}
+                        <li {%if nav_add %}class="active"{% endif %}>
+                            <a href="{% url 'add-message' %}"><i class="material-icons">add</i></a>
+                        </li>
+                        <li {% if nav_help %}class="active"{% endif %}>
+                            <a href="">Help</a>
+                        </li>
+                    {% endblock %}
                 </ul>
             </div>
         </nav>
