@@ -1,4 +1,9 @@
+import binascii
+
 from django import forms
+
+from pgpdump.data import AsciiData
+from pgpdump.utils import PgpdumpException
 
 from . import models
 
@@ -17,5 +22,8 @@ class NewMessageForm(forms.ModelForm):
         """Validate message format."""
         message = self.cleaned_data.get('message')
         if message is not None:
-            pass
+            try:
+                len([p for p in AsciiData(message.encode('ascii')).packets()])
+            except (PgpdumpException, binascii.Error):
+                raise forms.ValidationError('Message is not encrypted.')
         return message

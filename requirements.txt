@@ -6,6 +6,7 @@ flake8==2.4.1
 mccabe==0.3.1
 pep8==1.5.7
 pep8-naming==0.3.3
+pgpdump==1.5
 Pillow==3.0.0
 psycopg2==2.6.1
 pyflakes==0.8.1
