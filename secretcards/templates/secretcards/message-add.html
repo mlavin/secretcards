@@ -16,12 +16,12 @@
         <form action='' method='post' class="col s12">
             {% csrf_token %}
             <div class="row keybase">
-                <div class="input-field col s6">
+                <div class="input-field col s9 m6">
                     <i class="material-icons prefix">search</i>
                     <input placeholder="Find user on Keybase.io" id="keybase" type="text" class="validate">
                     <label for="keybase">Recipient</label>
                 </div>
-                <div class="input-field col s6">
+                <div class="input-field col s3 m6">
                     <div class="preloader-wrapper small">
                         <div class="spinner-layer spinner-blue-only">
                             <div class="circle-clipper left">
@@ -69,7 +69,9 @@
                 {{ form.image }}
             </div>
             <div class="row buttons">
-                <button id="save-button" disabled class="btn-flat disabled right">Save</button>
+                <button id="save-button" type="submit" disabled class="btn pink disabled right">
+                    Save <i class="material-icons right">send</i>
+                </button>
             </div>
         </form>
     </div>

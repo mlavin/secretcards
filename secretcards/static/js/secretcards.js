@@ -9,10 +9,10 @@
         },
         template: _.template(
             '<a href="#" class="row">' +
-            '<span class="col s10">' +
+            '<span class="col s6 l10">' +
             '<%- username %> <% if (name) { %>(<%- name %>)<% } %>' +
             '</span>' +
-            '<span class="col s2">' +
+            '<span class="col s6 l2">' +
             '<% if (thumbnail) { %>' +
             '<img src="<%- thumbnail %>" alt="<%- username %>" class="circle responsive-img">' +
             '<% } %>' +
