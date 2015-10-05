@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block body-id %}about{% endblock %}
+
+{% block nav-items %}
+    {% with nav_about=True %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}
+
+{% block content %}
+<section id="image-credits" class="container">
+    <h3>Image Credits</h3>
+    <div class="row">
+        <div class="col s12">
+            Homepage image by <a class="pink-text" href="https://www.flickr.com/photos/flossyflotsam/">flossyflotsam</a>
+            with <a class="pink-text" href="http://creativecommons.org/licenses/by/2.0/">some rights reserved</a>.
+        </div>
+    </div>
+    {% for row in images %}
+    <div class="row images">
+        {% for name, url in row %}
+            <div class="col s12 m6 l3">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="{{ url }}" alt="{{ name }}">
+                    </div>
+                    <div class="card-content">
+                         <a class="pink-text" href="http://creativecommons.org/licenses/by/2.0/">Some rights reserved</a> by
+                        <a class="pink-text" href="http://flickr.com/photos/{{ name }}/">{{ name }}</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+</section>
+{% endblock %}

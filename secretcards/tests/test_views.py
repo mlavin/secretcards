@@ -88,3 +88,14 @@ class MessageImageTestCase(ViewTestMixin, TestCase):
         self.assertEqual(
             response['Content-Disposition'],
             'attachment; filename={}.png'.format(self.message.slug))
+
+
+@override_settings(STATICFILES_STORAGE='django.contrib.staticfiles.storage.StaticFilesStorage')
+class AboutTestCase(ViewTestMixin, TestCase):
+    """About page view."""
+
+    def test_render_page(self):
+        """Fetch the about section."""
+        with self.assertTemplateUsed('about.html'):
+            response = self.client.get(reverse('about'))
+            self.assert_status(response, 200)

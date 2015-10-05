@@ -11,6 +11,21 @@ class HomepageView(TemplateView):
     template_name = 'home.html'
 
 
+class AboutView(TemplateView):
+    template_name = 'about.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        images = [
+            (user, staticfiles_storage.url('img/kittens/{}'.format(name)))
+            for name, user in models.IMAGES
+        ]
+        # Split into rows of 4
+        args = [iter(images)] * 4
+        context['images'] = itertools.zip_longest(fillvalue=None, *args)
+        return context
+
+
 class MessageAddView(CreateView):
     template_name = 'secretcards/message-add.html'
     model = models.Message
