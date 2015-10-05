@@ -1,4 +1,4 @@
-<DOCTYPE html>{% load staticfiles %}
+<!DOCTYPE html>{% load staticfiles %}
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -22,8 +22,8 @@
                         <li {%if nav_add %}class="active"{% endif %}>
                             <a href="{% url 'add-message' %}"><i class="material-icons">add</i></a>
                         </li>
-                        <li {% if nav_help %}class="active"{% endif %}>
-                            <a href="">Help</a>
+                        <li {% if nav_about %}class="active"{% endif %}>
+                        <a href="{% url 'about' %}"><i class="material-icons">help</i></a>
                         </li>
                     {% endblock %}
                 </ul>
@@ -36,7 +36,6 @@
         <div class="footer-copyright">
             <div class="container">
                 &copy; {% now 'Y' %} Secret Cards
-                <a class="grey-text text-lighten-4 right" href="#!">Privacy Policy</a>
             </div>
           </div>
     </footer>

@@ -201,11 +201,14 @@
                 current = this.$imageInput.val();
             if (image === current) {
                 $link.text($link.data('off'));
+                $link.parents('.card').removeClass('z-depth-5');
                 this.$imageInput.val('');
             } else {
                 $('a[data-image="' + current + '"]', this.$el)
-                    .text($link.data('off'));
+                    .text($link.data('off'))
+                    .parents('.card').removeClass('z-depth-5');
                 $link.text($link.data('on'));
+                $link.parents('.card').addClass('z-depth-5');
                 this.$imageInput.val(image);
             }
             this.toggleSaveButton();

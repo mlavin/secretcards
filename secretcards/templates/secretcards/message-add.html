@@ -11,67 +11,69 @@
 {% endblock %}
 
 {% block content %}
-<div class="row">
-    <form action='' method='post' class="col s12 m8 offset-m2">
-        {% csrf_token %}
-        <div class="row keybase">
-            <div class="input-field col s6">
-                <i class="material-icons prefix">search</i>
-                <input placeholder="Find user on Keybase.io" id="keybase" type="text" class="validate">
-                <label for="keybase">Recipient</label>
-            </div>
-            <div class="input-field col s6">
-                <div class="preloader-wrapper small">
-                    <div class="spinner-layer spinner-blue-only">
-                        <div class="circle-clipper left">
-                            <div class="circle"></div>
-                        </div>
-                        <div class="gap-patch">
-                            <div class="circle"></div>
-                        </div>
-                        <div class="circle-clipper right">
-                            <div class="circle"></div>
+<section class="container">
+    <div class="row">
+        <form action='' method='post' class="col s12">
+            {% csrf_token %}
+            <div class="row keybase">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">search</i>
+                    <input placeholder="Find user on Keybase.io" id="keybase" type="text" class="validate">
+                    <label for="keybase">Recipient</label>
+                </div>
+                <div class="input-field col s6">
+                    <div class="preloader-wrapper small">
+                        <div class="spinner-layer spinner-blue-only">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="gap-patch">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">edit</i>
-                <textarea id="{{ form.message.id }}" class="materialize-textarea" name="{{ form.message.name }}"></textarea>
-                <label for="{{ form.message.id }}">Message</label>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">edit</i>
+                    <textarea id="{{ form.message.id }}" class="materialize-textarea" name="{{ form.message.name }}"></textarea>
+                    <label for="{{ form.message.id }}">Message</label>
+                </div>
             </div>
-        </div>
-        <div class="row buttons">
-            <a id="encrypt-button" disabled class="btn-flat disabled right">Encrypt</a>
-        </div>
-        {% for row in images %}
-        <div class="row images">
-            {% for name, url in row %}
-                <div class="col s12 m6 l3">
-                    <div class="card">
-                        <div class="card-image">
-                            <img src="{{ url }}" alt="{{ name }}">
-                        </div>
-                        <div class="card-action">
-                            <a class="pink-text" data-image="{{ name }}" data-off="Select" data-on="Clear" href="#">
-                                Select
-                            </a>
+            <div class="row buttons">
+                <a id="encrypt-button" disabled class="btn-flat disabled right">Encrypt</a>
+            </div>
+            {% for row in images %}
+            <div class="row images">
+                {% for name, url in row %}
+                    <div class="col s12 m6 l3">
+                        <div class="card hoverable">
+                            <div class="card-image">
+                                <img src="{{ url }}" alt="{{ name }}">
+                            </div>
+                            <div class="card-action">
+                                <a class="pink-text" data-image="{{ name }}" data-off="Select" data-on="Clear" href="#">
+                                    Select
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                {% endfor %}
+            </div>
             {% endfor %}
-        </div>
-        {% endfor %}
-        <div class="hide">
-            {{ form.image }}
-        </div>
-        <div class="row buttons">
-            <button id="save-button" disabled class="btn-flat disabled right">Save</button>
-        </div>
-    </form>
-</div>
+            <div class="hide">
+                {{ form.image }}
+            </div>
+            <div class="row buttons">
+                <button id="save-button" disabled class="btn-flat disabled right">Save</button>
+            </div>
+        </form>
+    </div>
+</section>
 {% endblock %}
 
 {% block extra-js %}
