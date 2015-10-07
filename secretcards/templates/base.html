@@ -5,6 +5,7 @@
     <title>{% block title %}Secret Cards{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block extra-meta %}{% endblock %}
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
     <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/fonts.css' %}">
     <link rel="stylesheet" type="text/css" media="all" href="{% static 'libs/materialize.css' %}">
     <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/secretcards.css' %}">
@@ -15,7 +16,7 @@
         <nav class="light-blue">
             <div class="nav-wrapper container">
                 <a href="{% url 'home' %}" class="brand-logo">
-                    Secret Cards
+                   &#128572; Secret Cards
                 </a>
                 <ul class="right hide-on-small-only">
                     {% block nav-items %}
@@ -35,7 +36,7 @@
     <footer class="page-footer light-blue darken-3">
         <div class="footer-copyright">
             <div class="container">
-                &copy; {% now 'Y' %} Secret Cards
+                &copy; {% now 'Y' %} Mark Lavin
             </div>
           </div>
     </footer>
