@@ -2,6 +2,21 @@
 
 {% load staticfiles %}
 
+{% block extra-meta %}
+<!-- Open Graph Tags for Facebook -->
+<meta property="og:title" content="Adorably Secure Messages from Secret Cards" >
+<meta property="og:type" content="article" >
+<meta property="og:image" content="{{ full_original_url }}" >
+<meta property="og:url" content="{{ full_url }}" >
+<meta property="og:description" content="Someone has generated an encrypted message in this cat picture. Maybe it's for you!" >
+<!-- Twitter Card tags -->
+<meta name="twitter:card" content="summary_large_image" >
+<meta name="twitter:site" content="@DrOhYes" >
+<meta name="twitter:title" content="Adorably Secure Messages from Secret Cards" >
+<meta name="twitter:description" content="Someone has generated an encrypted message in this cat picture. Maybe it's for you!" >
+<meta name="twitter:image" content="{{ full_original_url }}" >
+{% endblock %}
+
 {% block body-id %}message-detail{% endblock %}
 
 {% block content %}

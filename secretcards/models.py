@@ -2,6 +2,7 @@ import io
 import zipfile
 
 from django.contrib.staticfiles import finders
+from django.contrib.staticfiles.storage import staticfiles_storage
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.timezone import now
@@ -58,6 +59,9 @@ class Message(models.Model):
 
     def get_image_url(self):
         return reverse('message-image', kwargs={'slug': self.slug})
+
+    def get_original_image_url(self):
+        return staticfiles_storage.url('img/kittens/{}'.format(self.image))
 
     def get_download_url(self):
         return '{}?download=png'.format(self.get_image_url())

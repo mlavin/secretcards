@@ -57,8 +57,12 @@ class MessageDetailView(DetailView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
+        context['full_url'] = self.request.build_absolute_uri(
+            context['message'].get_absolute_url())
         context['full_image_url'] = self.request.build_absolute_uri(
             context['message'].get_image_url())
+        context['full_original_url'] = self.request.build_absolute_uri(
+            context['message'].get_original_image_url())
         return context
 
     def render_to_response(self, context, **response_kwargs):
