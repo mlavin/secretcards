@@ -179,7 +179,7 @@
         el: '#message-form form',
         events: {
             'submit': 'submit',
-            'click .images .card-action a[data-image]': 'toggleImage',
+            'click .images .card': 'toggleImage',
             'input :input[name="message"]': 'toggleEncryptButton',
             'click #encrypt-button': 'encryptMessage'
         },
@@ -196,7 +196,7 @@
         },
         toggleImage: function (e) {
             e.preventDefault();
-            var $link = $(e.currentTarget),
+            var $link = $('.card-action a[data-image]', e.currentTarget),
                 image = $link.data('image'),
                 current = this.$imageInput.val();
             if (image === current) {
