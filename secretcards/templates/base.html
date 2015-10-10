@@ -15,9 +15,7 @@
     <header class="navbar-fixed">
         <nav class="light-blue">
             <div class="nav-wrapper container">
-                <a href="{% url 'home' %}" class="brand-logo">
-                   &#128572; Secret Cards
-                </a>
+                <a href="{% url 'home' %}" class="brand-logo">Secret Cards</a>
                 <ul class="right hide-on-small-only">
                     {% block nav-items %}
                         <li {%if nav_add %}class="active"{% endif %}>
