@@ -52,7 +52,7 @@
 </section>
 <section id="help">
     <div class="row">
-        <div class="col s12 m6 offset-m3">
+        <div class="col s12 m8 offset-m2">
             <h4>Sending the Message</h4>
             Your message has been created now you need to send it. You can download
             the message image and send it email or you can share in through a social
@@ -62,13 +62,14 @@
         </div>
     </div>
     <div class="row">
-        <div class="col s12 m6 offset-m3">
+        <div class="col s12 m8 offset-m2">
             <h4>Receiving the Message</h4>
             Decrypting this message requires having the private key so it can only be
             read by its intended recipient. If this message
             was encrypted for you then you can decrypt it using your Keybase account.
             Download the message and extract it as a zip to reveal the message saved
-            as a .asc file inside.
+            as a .asc file inside. Below is an example using the popular
+            <a class="pink-text" href="http://curl.haxx.se/">curl</a> utility to fetch the image.
             <pre class="black white-text terminal">
 $ curl -o {{ message.slug }}.zip {{ full_image_url }}
 $ unzip {{ message.slug }}.zip
