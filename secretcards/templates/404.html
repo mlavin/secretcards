@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block body-id %}error-404{% endblock %}
+
+{% block content %}
+<section id="splash valign-wrapper">
+    <div class="row">
+        <div class="col s12 m8 offset-m2 valign center">
+            <h1 class="light-blue-text">Not Found</h1>
+            <div class="card-panel white">The page you are looking for could not be found on the server.</div>
+        </div>
+    </div>
+</section>
+{% endblock %}

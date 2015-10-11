@@ -12,25 +12,27 @@
     {% block extra-css %}{% endblock %}
 </head>
 <body id="{% block body-id %}body{% endblock %}" class="{% block body-class %}body{% endblock %}">
-    <header class="navbar-fixed">
-        <nav class="light-blue">
-            <div class="nav-wrapper container">
-                <a href="{% url 'home' %}" class="brand-logo">Secret Cards</a>
-                <ul class="right hide-on-small-only">
-                    {% block nav-items %}
-                        <li {%if nav_add %}class="active"{% endif %}>
-                            <a href="{% url 'add-message' %}"><i class="material-icons">add</i></a>
-                        </li>
-                        <li {% if nav_about %}class="active"{% endif %}>
-                        <a href="{% url 'about' %}"><i class="material-icons">help</i></a>
-                        </li>
-                    {% endblock %}
-                </ul>
-            </div>
-        </nav>
-    </header>
-    {% block content %}
-    {% endblock %}
+    <div class="main">
+        <header class="navbar-fixed">
+            <nav class="light-blue">
+                <div class="nav-wrapper container">
+                    <a href="{% url 'home' %}" class="brand-logo">Secret Cards</a>
+                    <ul class="right hide-on-small-only">
+                        {% block nav-items %}
+                            <li {%if nav_add %}class="active"{% endif %}>
+                                <a href="{% url 'add-message' %}"><i class="material-icons">add</i></a>
+                            </li>
+                            <li {% if nav_about %}class="active"{% endif %}>
+                            <a href="{% url 'about' %}"><i class="material-icons">help</i></a>
+                            </li>
+                        {% endblock %}
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        {% block content %}
+        {% endblock %}
+    </div>
     <footer class="page-footer light-blue darken-3">
         <div class="footer-copyright">
             <div class="container">
