@@ -62,6 +62,7 @@ class ViewMessageTestCase(ViewTestMixin, TestCase):
         self.assert_status(response, 404)
 
 
+@override_settings(STATICFILES_STORAGE='django.contrib.staticfiles.storage.StaticFilesStorage')
 class MessageImageTestCase(ViewTestMixin, TestCase):
     """Dynamically generated images with messages."""
 
