@@ -1,7 +1,9 @@
+KEY=$(shell strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 64 | tr -d '\n';)
+
 default: lint test
 
 .env:
-	@echo SECRET_KEY=`pwgen 64 1` >> $@
+	@echo SECRET_KEY="$(KEY)" >> $@
 
 install: .env
 	pip install -r requirements.txt
