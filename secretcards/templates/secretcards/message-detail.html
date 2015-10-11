@@ -11,7 +11,7 @@
 <meta property="og:description" content="Someone has generated an encrypted message in this cat picture. Maybe it's for you!" >
 <!-- Twitter Card tags -->
 <meta name="twitter:card" content="summary_large_image" >
-<meta name="twitter:site" content="@DrOhYes" >
+<meta name="twitter:site" content="@secret_cards" >
 <meta name="twitter:title" content="Adorably Secure Messages from Secret Cards" >
 <meta name="twitter:description" content="Someone has generated an encrypted message in this cat picture. Maybe it's for you!" >
 <meta name="twitter:image" content="{{ full_original_url }}" >
@@ -29,6 +29,22 @@
                 </div>
                 <div class="card-action">
                     <a class="pink-text" href="{{ message.get_download_url }}">Download</a>
+                    <span class="right">
+                        {% with share_url=full_url|iriencode share_text="A secret message for you" %}
+                        <a class="pink-text" target="_blank" title="Tweet this message"
+                            href="https://twitter.com/share?url={{ share_url }}&amp;text={{ share_text }} on @secret_cards">
+                            <span class="social-icon">a</span>
+                        </a>
+                        <a class="pink-text" target="_blank" title="Share this messsage on Facebook"
+                            href="http://www.facebook.com/sharer.php?u={{ share_url }}&amp;t={{ share_text }} on Secret Cards">
+                            <span class="social-icon">b</span>
+                        </a>
+                        <a class="pink-text" target="_blank" title="Share this message on G+"
+                            href="https://plusone.google.com/_/+1/confirm?hl=en&url={{ share_url }}">
+                            <span class="social-icon">c</span>
+                        </a>
+                        {% endwith %}
+                    </span>
                 </div>
             </div>
         </div>
@@ -37,13 +53,26 @@
 <section id="help">
     <div class="row">
         <div class="col s12 m6 offset-m3">
-            Decrypting this message requires having the private key. If this message
+            <h4>Sending the Message</h4>
+            Your message has been created now you need to send it. You can download
+            the message image and send it email or you can share in through a social
+            media channel. Don't worry; while others see the adorable image, only
+            the selected user can read the message inside.
+            <p><a class="btn pink right" href="{% url 'add-message' %}">New Message</a></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m6 offset-m3">
+            <h4>Receiving the Message</h4>
+            Decrypting this message requires having the private key so it can only be
+            read by its intended recipient. If this message
             was encrypted for you then you can decrypt it using your Keybase account.
-            <pre>
+            Download the message and extract it as a zip to reveal the message saved
+            as a .asc file inside.
+            <pre class="black white-text terminal">
 $ curl -o {{ message.slug }}.zip {{ full_image_url }}
 $ unzip {{ message.slug }}.zip
-$ keybase decrypt {{ message.slug }}.asc
-            </pre>
+$ keybase decrypt {{ message.slug }}.asc</pre>
             If you don't have a Keybase account then this message is definately not
             for you.
         </div>
