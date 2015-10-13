@@ -5,6 +5,8 @@ This is the source code for https://secret.cards. It's simple site for sending
 anonymous, encrypted messages in cat pictures. If you would like to add a feature,
 fix a bug, or simply see how it works then please continue reading.
 
+.. image:: https://travis-ci.org/mlavin/secretcards.svg?branch=master
+    :target: https://travis-ci.org/mlavin/secretcards
 
 Contributing
 ------------
