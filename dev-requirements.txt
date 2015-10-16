@@ -1,5 +1,5 @@
 -r requirements.txt
-coverage==4.0
+coverage==4.0.1
 flake8==2.4.1
 mccabe==0.3.1
 pep8==1.5.7
