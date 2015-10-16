@@ -11,7 +11,7 @@ cache:
 
 install:
   - pip install -U pip
-  - make install
+  - make dev
 
 before_script:
   - createdb -E UTF-8 secretcards -U postgres -O $USER
