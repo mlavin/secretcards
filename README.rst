@@ -41,11 +41,11 @@ To setup your local environment you should create a virtualenv and install the n
     # Check that you have python3.4 installed
     $ which python3.4
     $ mkvirtualenv secretcards -p `which python3.4`
-    (secretcards)$ make install
+    (secretcards)$ make dev
 
 Configurable settings are managed with `django-dotenv <https://github.com/jpadilla/django-dotenv>`_.
 It reads environment variables located in a file name ``.env`` in the top level directory of the project.
-The previous command ``make install`` creates new ``.env`` file with a new ``SECRET_KEY`` value set.
+The previous command ``make dev`` creates new ``.env`` file with a new ``SECRET_KEY`` value set.
 
 Create the Postgres database and run the initial migrate::
 

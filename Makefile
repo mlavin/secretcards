@@ -8,6 +8,9 @@ default: lint test
 install: .env
 	pip install -r requirements.txt
 
+dev: .env
+	pip install -r dev-requirements.txt
+
 lint: lint-py lint-migrations lint-django lint-deploy
 
 lint-py:
@@ -26,6 +29,6 @@ test:
 	coverage run manage.py test
 	coverage report -m --fail-under 90
 
-.PHONY: default install test lint lint-py lint-migrations lint-django lint-deploy
+.PHONY: default install dev test lint lint-py lint-migrations lint-django lint-deploy
 
 .PRECIOUS: .env
