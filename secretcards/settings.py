@@ -149,3 +149,21 @@ SILENCED_SYSTEM_CHECKS = [
     # Not enabling HSTS for all subdomains
     'security.W005'
 ]
+
+# Conditional settings
+
+# Opbeat
+OPBEAT = {
+    'ORGANIZATION_ID': os.environ.get('OPBEAT_ORGANIZATION_ID'),
+    'APP_ID': os.environ.get('OPBEAT_APP_ID'),
+    'SECRET_TOKEN': os.environ.get('OPBEAT_SECRET_TOKEN'),
+}
+
+if all(OPBEAT.values()):
+    INSTALLED_APPS += (
+        'opbeat.contrib.django',
+    )
+
+    MIDDLEWARE_CLASSES = (
+        'opbeat.contrib.django.middleware.OpbeatAPMMiddleware',
+    ) + MIDDLEWARE_CLASSES
