@@ -1,0 +1,11 @@
+/* TEAM */
+Developer: Mark Lavin
+Twitter: @DrOhYes
+URL: mlavin.org
+
+/* THANKS */
+Keybase: https://keybase.io
+Django: https://www.djangoproject.com
+
+/* SITE */
+Source: https://github.com/mlavin/secretcards
