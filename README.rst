@@ -8,6 +8,9 @@ fix a bug, or simply see how it works then please continue reading.
 .. image:: https://travis-ci.org/mlavin/secretcards.svg?branch=master
     :target: https://travis-ci.org/mlavin/secretcards
 
+.. image:: https://codecov.io/github/mlavin/secretcards/coverage.svg?branch=master
+    :target: https://codecov.io/github/mlavin/secretcards?branch=master
+
 Contributing
 ------------
 
