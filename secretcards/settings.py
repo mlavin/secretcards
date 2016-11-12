@@ -24,7 +24,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 )
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = (
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -168,6 +168,6 @@ if all(OPBEAT.values()):
         'opbeat.contrib.django',
     )
 
-    MIDDLEWARE_CLASSES = (
+    MIDDLEWARE = (
         'opbeat.contrib.django.middleware.OpbeatAPMMiddleware',
-    ) + MIDDLEWARE_CLASSES
+    ) + MIDDLEWARE

@@ -3,8 +3,8 @@ import zipfile
 
 from django.contrib.staticfiles import finders
 from django.contrib.staticfiles.storage import staticfiles_storage
-from django.core.urlresolvers import reverse
 from django.db import models
+from django.urls import reverse
 from django.utils.timezone import now
 
 from simpleflake import simpleflake
