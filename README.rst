@@ -30,7 +30,7 @@ Project Setup
 
 To begin work on the project you will need the following software installed
 
-- Python 3.4 including pip and virtualenv. virtualenvwrapper is recommended.
+- Python 3.5 including pip and virtualenv. virtualenvwrapper is recommended.
 - Postgres 9.0+
 - git 1.7+
 
@@ -41,9 +41,9 @@ First fork and clone your copy of the repository::
 
 To setup your local environment you should create a virtualenv and install the necessary requirements::
 
-    # Check that you have python3.4 installed
-    $ which python3.4
-    $ mkvirtualenv secretcards -p `which python3.4`
+    # Check that you have python3.5 installed
+    $ which python3.5
+    $ mkvirtualenv secretcards -p `which python3.5`
     (secretcards)$ make dev
 
 Configurable settings are managed with `django-dotenv <https://github.com/jpadilla/django-dotenv>`_.
