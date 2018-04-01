@@ -27,7 +27,7 @@ lint-deploy:
 
 test:
 	coverage run manage.py test
-	coverage report -m --fail-under 90
+	coverage report -m --fail-under 95
 
 .PHONY: default install dev test lint lint-py lint-migrations lint-django lint-deploy
 
