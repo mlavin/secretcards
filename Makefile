@@ -29,6 +29,10 @@ test:
 	coverage run manage.py test
 	coverage report -m --fail-under 95
 
+%.txt: %.in
+	pip-compile --upgrade --build-isolation --generate-hashes --output-file $@ $^
+
+
 .PHONY: default install dev test lint lint-py lint-migrations lint-django lint-deploy
 
 .PRECIOUS: .env

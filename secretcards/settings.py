@@ -20,50 +20,50 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Application definition
 
 INSTALLED_APPS = (
-    'secretcards',
-    'django.contrib.staticfiles',
+    "secretcards",
+    "django.contrib.staticfiles",
 )
 
 MIDDLEWARE = (
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django.middleware.security.SecurityMiddleware",
 )
 
-ROOT_URLCONF = 'secretcards.urls'
+ROOT_URLCONF = "secretcards.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'secretcards.wsgi.application'
+WSGI_APPLICATION = "secretcards.wsgi.application"
 
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default='postgres:///secretcards'),
+    "default": dj_database_url.config(default="postgres:///secretcards"),
 }
 
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "UTC"
 
 USE_I18N = True
 
@@ -75,39 +75,39 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-PUBLIC_ROOT = os.environ.get('PUBLIC_ROOT', os.path.join(BASE_DIR, 'public'))
+PUBLIC_ROOT = os.environ.get("PUBLIC_ROOT", os.path.join(BASE_DIR, "public"))
 
-STATIC_URL = '/static/'
+STATIC_URL = "/static/"
 
-STATIC_ROOT = os.path.join(PUBLIC_ROOT, 'static')
+STATIC_ROOT = os.path.join(PUBLIC_ROOT, "static")
 
-MEDIA_URL = '/media/'
+MEDIA_URL = "/media/"
 
-MEDIA_ROOT = os.path.join(PUBLIC_ROOT, 'media')
+MEDIA_ROOT = os.path.join(PUBLIC_ROOT, "media")
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = "whitenoise.django.GzipManifestStaticFilesStorage"
 
-WHITENOISE_ROOT = os.path.join(os.path.dirname(__file__), 'public')
+WHITENOISE_ROOT = os.path.join(os.path.dirname(__file__), "public")
 
 # Security settings
 
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = os.environ["SECRET_KEY"]
 
-DEBUG = os.environ.get('DEBUG', 'on') == 'on'
+DEBUG = os.environ.get("DEBUG", "on") == "on"
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(';')
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "localhost").split(";")
 
-INTERNAL_IPS = ('127.0.0.1', )
+INTERNAL_IPS = ("127.0.0.1",)
 
-X_FRAME_OPTIONS = 'DENY'
+X_FRAME_OPTIONS = "DENY"
 
 SECURE_CONTENT_TYPE_NOSNIFF = True
 
 SECURE_BROWSER_XSS_FILTER = True
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
-SSL_ENABLED = os.environ.get('SSL', 'off') == 'on'
+SSL_ENABLED = os.environ.get("SSL", "off") == "on"
 
 SECURE_SSL_REDIRECT = SSL_ENABLED
 
@@ -126,52 +126,25 @@ CSRF_COOKIE_HTTPONLY = True
 # Logging settings
 
 LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'default': {
-            'format': '[%(asctime)s: %(levelname)s/%(name)s] - %(message)s',
-        },
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "default": {"format": "[%(asctime)s: %(levelname)s/%(name)s] - %(message)s",},
     },
-    'handlers': {
-        'console': {
-            'level': 'INFO',
-            'class': 'logging.StreamHandler',
-            'formatter': 'default',
+    "handlers": {
+        "console": {
+            "level": "INFO",
+            "class": "logging.StreamHandler",
+            "formatter": "default",
         }
     },
-    'root': {
-        'level': 'INFO',
-        'handlers': ['console', ]
-    },
-    'loggers': {
-        'django': {
-            'propagate': True,
-        },
-    }
+    "root": {"level": "INFO", "handlers": ["console",]},
+    "loggers": {"django": {"propagate": True,},},
 }
 
 # Systems checks
 
 SILENCED_SYSTEM_CHECKS = [
     # Not enabling HSTS for all subdomains
-    'security.W005'
+    "security.W005"
 ]
-
-# Conditional settings
-
-# Opbeat
-OPBEAT = {
-    'ORGANIZATION_ID': os.environ.get('OPBEAT_ORGANIZATION_ID'),
-    'APP_ID': os.environ.get('OPBEAT_APP_ID'),
-    'SECRET_TOKEN': os.environ.get('OPBEAT_SECRET_TOKEN'),
-}
-
-if all(OPBEAT.values()):
-    INSTALLED_APPS += (
-        'opbeat.contrib.django',
-    )
-
-    MIDDLEWARE = (
-        'opbeat.contrib.django.middleware.OpbeatAPMMiddleware',
-    ) + MIDDLEWARE
