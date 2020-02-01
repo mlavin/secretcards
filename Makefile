@@ -11,10 +11,7 @@ install: .env
 dev: .env
 	pip install -r dev-requirements.txt
 
-lint: lint-py lint-migrations lint-django lint-deploy
-
-lint-py:
-	flake8 .
+lint: lint-migrations lint-django lint-deploy
 
 lint-migrations:
 	@python manage.py makemigrations --dry-run | grep 'No changes detected' || (echo 'There are changes which require migrations.' && exit 1)
@@ -33,6 +30,6 @@ test:
 	pip-compile --upgrade --build-isolation --generate-hashes --output-file $@ $^
 
 
-.PHONY: default install dev test lint lint-py lint-migrations lint-django lint-deploy
+.PHONY: default install dev test lint lint-migrations lint-django lint-deploy
 
 .PRECIOUS: .env
