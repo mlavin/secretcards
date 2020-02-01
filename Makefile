@@ -9,7 +9,7 @@ install: .env
 	pip install -r requirements.txt
 
 dev: .env
-	pip install -r dev-requirements.txt
+	pip install -r dev-requirements.txt -r requirements.txt
 
 lint: lint-migrations lint-django lint-deploy
 
