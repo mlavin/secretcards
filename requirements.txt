@@ -6,18 +6,23 @@
 #
 dj-database-url==0.5.0 \
     --hash=sha256:4aeaeb1f573c74835b0686a2b46b85990571159ffc21aa57ecd4d1e1cb334163 \
-    --hash=sha256:851785365761ebe4994a921b433062309eb882fedd318e1b0fcecc607ed02da9
+    --hash=sha256:851785365761ebe4994a921b433062309eb882fedd318e1b0fcecc607ed02da9 \
+    # via -r requirements.in
 django-dotenv==1.4.2 \
     --hash=sha256:3812bb0f4876cf31f902aad140f0645e120e51ee30eb7c40c22050f58a0e4adb \
-    --hash=sha256:a9b1b40a70bd321acd231926acedb9bd2c5e873e33a1873b34a7276d196a765e
-django==2.2.10 \
-    --hash=sha256:1226168be1b1c7efd0e66ee79b0e0b58b2caa7ed87717909cd8a57bb13a7079a \
-    --hash=sha256:9a4635813e2d498a3c01b10c701fe4a515d76dd290aaa792ccb65ca4ccb6b038
+    --hash=sha256:a9b1b40a70bd321acd231926acedb9bd2c5e873e33a1873b34a7276d196a765e \
+    # via -r requirements.in
+django==2.2.13 \
+    --hash=sha256:84f370f6acedbe1f3c41e1a02de44ac206efda3355e427139ecb785b5f596d80 \
+    --hash=sha256:e8fe3c2b2212dce6126becab7a693157f1a441a07b62ec994c046c76af5bb66d \
+    # via -r requirements.in
 gunicorn==20.0.4 \
     --hash=sha256:1904bb2b8a43658807108d59c3f3d56c2b6121a701161de0ddf9ad140073c626 \
-    --hash=sha256:cd4a810dd51bf497552cf3f863b575dabd73d6ad6a91075b65936b151cbf4f9c
+    --hash=sha256:cd4a810dd51bf497552cf3f863b575dabd73d6ad6a91075b65936b151cbf4f9c \
+    # via -r requirements.in
 pgpdump==1.5 \
-    --hash=sha256:1c4700857bf7ba735b08cfe4101aa3a4f5fd839657af249c17b2697c20829668
+    --hash=sha256:1c4700857bf7ba735b08cfe4101aa3a4f5fd839657af249c17b2697c20829668 \
+    # via -r requirements.in
 pillow==7.0.0 \
     --hash=sha256:0a628977ac2e01ca96aaae247ec2bd38e729631ddf2221b4b715446fd45505be \
     --hash=sha256:4d9ed9a64095e031435af120d3c910148067087541131e82b3e8db302f4c8946 \
@@ -40,7 +45,8 @@ pillow==7.0.0 \
     --hash=sha256:c18f70dc27cc5d236f10e7834236aff60aadc71346a5bc1f4f83a4b3abee6386 \
     --hash=sha256:c5ed816632204a2fc9486d784d8e0d0ae754347aba99c811458d69fcdfd2a2f9 \
     --hash=sha256:dc058b7833184970d1248135b8b0ab702e6daa833be14035179f2acb78ff5636 \
-    --hash=sha256:ff3797f2f16bf9d17d53257612da84dd0758db33935777149b3334c01ff68865
+    --hash=sha256:ff3797f2f16bf9d17d53257612da84dd0758db33935777149b3334c01ff68865 \
+    # via -r requirements.in
 psycopg2-binary==2.8.4 \
     --hash=sha256:040234f8a4a8dfd692662a8308d78f63f31a97e1c42d2480e5e6810c48966a29 \
     --hash=sha256:086f7e89ec85a6704db51f68f0dcae432eff9300809723a6e8782c41c2f48e03 \
@@ -73,23 +79,27 @@ psycopg2-binary==2.8.4 \
     --hash=sha256:b8f490f5fad1767a1331df1259763b3bad7d7af12a75b950c2843ba319b2415f \
     --hash=sha256:dbc5cd56fff1a6152ca59445178652756f4e509f672e49ccdf3d79c1043113a4 \
     --hash=sha256:eac8a3499754790187bb00574ab980df13e754777d346f85e0ff6df929bcd964 \
-    --hash=sha256:eaed1c65f461a959284649e37b5051224f4db6ebdc84e40b5e65f2986f101a08
+    --hash=sha256:eaed1c65f461a959284649e37b5051224f4db6ebdc84e40b5e65f2986f101a08 \
+    # via -r requirements.in
 pytz==2019.3 \
     --hash=sha256:1c557d7d0e871de1f5ccd5833f60fb2550652da6be2693c1e02300743d21500d \
     --hash=sha256:b02c06db6cf09c12dd25137e563b31700d3b80fcc4ad23abb7a315f2789819be \
     # via django
 simpleflake==0.1.5 \
-    --hash=sha256:6f0c1a092c44900902fea6d4347317cda8ebdfaa636a2ec71be9395c4880a3b2
+    --hash=sha256:6f0c1a092c44900902fea6d4347317cda8ebdfaa636a2ec71be9395c4880a3b2 \
+    # via -r requirements.in
 sqlparse==0.3.0 \
     --hash=sha256:40afe6b8d4b1117e7dff5504d7a8ce07d9a1b15aeeade8a2d10f130a834f8177 \
     --hash=sha256:7c3dca29c022744e95b547e867cee89f4fce4373f3549ccd8797d8eb52cdb873 \
     # via django
 wheel==0.34.2 \
     --hash=sha256:8788e9155fe14f54164c1b9eb0a319d98ef02c160725587ad60f14ddc57b6f96 \
-    --hash=sha256:df277cb51e61359aba502208d680f90c0493adec6f0e848af94948778aed386e
+    --hash=sha256:df277cb51e61359aba502208d680f90c0493adec6f0e848af94948778aed386e \
+    # via -r requirements.in
 whitenoise==3.3.1 \
     --hash=sha256:15f43b2e701821b95c9016cf469d29e2a546cb1c7dead584ba82c36f843995cf \
-    --hash=sha256:9d81515f2b5b27051910996e1e860b1332e354d9e7bcf30c98f21dcb6713e0dd
+    --hash=sha256:9d81515f2b5b27051910996e1e860b1332e354d9e7bcf30c98f21dcb6713e0dd \
+    # via -r requirements.in
 
 # WARNING: The following packages were not pinned, but pip requires them to be
 # pinned when the requirements file includes hashes. Consider using the --allow-unsafe flag.
